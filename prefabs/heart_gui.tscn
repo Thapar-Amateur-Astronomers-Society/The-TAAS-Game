@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlji72vojuusy"]
+[gd_scene load_steps=9 format=3 uid="uid://dlji72vojuusy"]
 
+[ext_resource type="Script" path="res://scripts/heart_gui.gd" id="1_qk283"]
 [ext_resource type="Texture2D" uid="uid://b734hngbp21k1" path="res://assets/gui/heart_animated.png" id="1_tpaml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bgmd"]
@@ -50,9 +51,12 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(96, 96)
 offset_right = 96.0
 offset_bottom = 96.0
+script = ExtResource("1_qk283")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(5.64706, 5.64706)
 sprite_frames = SubResource("SpriteFrames_ejlm7")
 centered = false
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

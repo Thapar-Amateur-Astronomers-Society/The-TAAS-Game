@@ -3,11 +3,13 @@ extends Node2D
 # Spawn enemies randomly
 
 @onready var asteroid_prefab = preload("res://prefabs/asteroid.tscn")
+@onready var heartsContainer = $HeartsCanvas/HeartsContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	heartsContainer.setMaxHearts($player.MAX_HEALTH)
+	heartsContainer.updateHearts($player.CURR_HEALTH)
+	$player.healthChanged.connect(heartsContainer.updateHearts)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

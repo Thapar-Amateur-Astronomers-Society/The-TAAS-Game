@@ -1,6 +1,8 @@
 extends Area2D
 class_name player
 
+signal healthChanged
+
 @export var speed = 3.0
 @export var cooldown = 1.0
 @export var MAX_HEALTH = 3
@@ -44,4 +46,5 @@ func _on_area_entered(area):
 		CURR_HEALTH -= 1
 		CURR_HEALTH = maxi(CURR_HEALTH, 0)
 		$ship_Sprite2D.frame += 1
+		healthChanged.emit(CURR_HEALTH)
 	
