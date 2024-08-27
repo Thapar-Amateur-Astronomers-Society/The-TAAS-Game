@@ -1,4 +1,5 @@
 extends Area2D
+class_name enemy
 
 @export var speed = 5.0
 @export var rot_speed = randf_range(-0.01, 0.01)
@@ -30,4 +31,5 @@ func _on_area_entered(area):
 	elif area is player:
 		hit.play()
 	animate.play()
+	
 

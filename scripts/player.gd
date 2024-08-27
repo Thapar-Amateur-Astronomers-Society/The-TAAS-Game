@@ -3,6 +3,7 @@ class_name player
 
 @export var speed = 3.0
 @export var cooldown = 1.0
+@export var HEALTH = 3
 
 @onready var laser_prefab = preload("res://prefabs/laser.tscn")
 @onready var laser_timer = $LaserInterval
@@ -33,3 +34,12 @@ func _process(delta):
 		get_parent().add_child(laser)
 		laser_sound.play()
 		
+
+
+func _on_area_entered(area):
+	# What to do upon collision with player body
+	if area is enemy:
+		HEALTH -= 1
+		HEALTH = maxi(HEALTH, 0)
+		
+	
