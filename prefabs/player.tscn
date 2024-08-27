@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfcobumvo5yls"]
+[gd_scene load_steps=15 format=3 uid="uid://cfcobumvo5yls"]
 
 [ext_resource type="Texture2D" uid="uid://cvemxxprwpx8y" path="res://assets/player_ship/Main Ship - Base - Full health.png" id="1_hot3r"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k1pkx"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://78cix41v18qn" path="res://audio/laser.wav" id="4_5n6ld"]
 [ext_resource type="Texture2D" uid="uid://bnmsrk0qh1kcd" path="res://assets/player_ship/Main Ship - Base - Slight damage.png" id="4_gpjtr"]
 [ext_resource type="Texture2D" uid="uid://cxg7tbsl5tyv3" path="res://assets/player_ship/Main Ship - Base - Very damaged.png" id="5_kqdmv"]
+[ext_resource type="Texture2D" uid="uid://bfe8c2mbfgt05" path="res://assets/player_ship/Main Ship - Base - Damaged.png" id="5_xp8an"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxv8"]
 atlas = ExtResource("2_j7424")
@@ -62,11 +63,14 @@ animations = [{
 "texture": ExtResource("4_gpjtr")
 }, {
 "duration": 1.0,
+"texture": ExtResource("5_xp8an")
+}, {
+"duration": 1.0,
 "texture": ExtResource("5_kqdmv")
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4pg4"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlji72vojuusy"]
+
+[ext_resource type="Texture2D" uid="uid://b734hngbp21k1" path="res://assets/gui/heart_animated.png" id="1_tpaml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bgmd"]
+atlas = ExtResource("1_tpaml")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnpl5"]
+atlas = ExtResource("1_tpaml")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbwns"]
+atlas = ExtResource("1_tpaml")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjm4s"]
+atlas = ExtResource("1_tpaml")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqqti"]
+atlas = ExtResource("1_tpaml")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejlm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bgmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnpl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbwns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjm4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqqti")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="heart" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(96, 96)
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5.64706, 5.64706)
+sprite_frames = SubResource("SpriteFrames_ejlm7")
+centered = false

@@ -3,14 +3,16 @@ class_name player
 
 @export var speed = 3.0
 @export var cooldown = 1.0
-@export var HEALTH = 3
+@export var MAX_HEALTH = 3
 
 @onready var laser_prefab = preload("res://prefabs/laser.tscn")
 @onready var laser_timer = $LaserInterval
 @onready var laser_sound = $laser_sound
+@onready var CURR_HEALTH = MAX_HEALTH
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ship_Sprite2D.frame = 0
 	pass # Replace with function body.
 
 
@@ -39,7 +41,7 @@ func _process(delta):
 func _on_area_entered(area):
 	# What to do upon collision with player body
 	if area is enemy:
-		HEALTH -= 1
-		HEALTH = maxi(HEALTH, 0)
+		CURR_HEALTH -= 1
+		CURR_HEALTH = maxi(CURR_HEALTH, 0)
 		$ship_Sprite2D.frame += 1
 	

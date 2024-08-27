@@ -10,15 +10,13 @@ class_name enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	animate.frame = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= speed
 	rotation += rot_speed
-	if animate.frame == 6 :
-		queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -33,3 +31,7 @@ func _on_area_entered(area):
 	animate.play()
 	
 
+
+
+func _on_animated_sprite_2d_animation_finished():
+	queue_free()
