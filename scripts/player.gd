@@ -41,5 +41,5 @@ func _on_area_entered(area):
 	if area is enemy:
 		HEALTH -= 1
 		HEALTH = maxi(HEALTH, 0)
-		
+		$ship_Sprite2D.frame += 1
 	

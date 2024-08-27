@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfcobumvo5yls"]
+[gd_scene load_steps=14 format=3 uid="uid://cfcobumvo5yls"]
 
 [ext_resource type="Texture2D" uid="uid://cvemxxprwpx8y" path="res://assets/player_ship/Main Ship - Base - Full health.png" id="1_hot3r"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k1pkx"]
 [ext_resource type="Texture2D" uid="uid://cwy2juqjrigf8" path="res://assets/player_ship/boosters.png" id="2_j7424"]
 [ext_resource type="AudioStream" uid="uid://78cix41v18qn" path="res://audio/laser.wav" id="4_5n6ld"]
+[ext_resource type="Texture2D" uid="uid://bnmsrk0qh1kcd" path="res://assets/player_ship/Main Ship - Base - Slight damage.png" id="4_gpjtr"]
+[ext_resource type="Texture2D" uid="uid://cxg7tbsl5tyv3" path="res://assets/player_ship/Main Ship - Base - Very damaged.png" id="5_kqdmv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxv8"]
 atlas = ExtResource("2_j7424")
@@ -50,6 +52,23 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrett"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hot3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gpjtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kqdmv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4pg4"]
 radius = 56.0022
 
@@ -65,11 +84,11 @@ autoplay = "default"
 frame = 4
 frame_progress = 0.992532
 
-[node name="ship_Sprite2D" type="Sprite2D" parent="."]
+[node name="ship_Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 rotation = 1.5708
 scale = Vector2(5, 5)
-texture = ExtResource("1_hot3r")
+sprite_frames = SubResource("SpriteFrames_mrett")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
