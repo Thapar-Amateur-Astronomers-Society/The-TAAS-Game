@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtot3tnko3gxs"]
+
+[ext_resource type="Script" path="res://scripts/asteroid.gd" id="1_iru66"]
+[ext_resource type="Texture2D" uid="uid://bajqgo387mber" path="res://assets/asteroids/asteroid_spritesheet.png" id="1_t5vr7"]
+[ext_resource type="AudioStream" uid="uid://8smepjwphf8c" path="res://audio/asteroid_destroy.wav" id="3_xa520"]
+[ext_resource type="AudioStream" uid="uid://de33jsytt2k0o" path="res://audio/asteroid_hit.wav" id="4_w5pun"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7kup"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44ccj"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dggqj"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1psxa"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ised4"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koi45"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6me4"]
+atlas = ExtResource("1_t5vr7")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hriq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7kup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44ccj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dggqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1psxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ised4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koi45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6me4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="asteroid" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_iru66")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hriq0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+texture_filter = 1
+polygon = PackedVector2Array(-12.8, 12.8, -16, 8, -17.6, 1.6, -17.6, -4.8, -12.8, -11.2, -8, -14.4, -1.6, -14.4, 4.8, -12.8, 8, -9.6, 11.2, -6.4, 14.4, -4.8, 16, -1.6, 17.6, 0, 17.6, 1.6, 16, 4.8, 16, 8, 12.8, 11.2, 8, 14.4, 4.8, 16, -6.4, 16)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.333334, 0.333333)
+scale = Vector2(1.83333, 1.56667)
+
+[node name="destroy_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xa520")
+
+[node name="hit_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w5pun")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
