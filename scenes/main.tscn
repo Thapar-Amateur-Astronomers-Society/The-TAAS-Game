@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d15pqeaiu2sid"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_38rcc"]
+[ext_resource type="PackedScene" uid="uid://cfcobumvo5yls" path="res://prefabs/player.tscn" id="1_pej3r"]
+[ext_resource type="PackedScene" uid="uid://bifinebyla10o" path="res://scenes/parallax_bg.tscn" id="2_6ni8v"]
+[ext_resource type="AudioStream" uid="uid://hogj58x6pmp7" path="res://audio/voyage-pandabeats.wav" id="4_q01u6"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_38rcc")
+
+[node name="player" parent="." instance=ExtResource("1_pej3r")]
+position = Vector2(96, 528)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_6ni8v")]
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="bgmusic-player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_q01u6")
+autoplay = true
+
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
