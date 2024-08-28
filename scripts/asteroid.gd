@@ -1,5 +1,6 @@
 extends Area2D
 class_name enemy
+signal enemy_killed
 
 @export var speed = 5.0
 @export var rot_speed = randf_range(-0.01, 0.01)
@@ -26,11 +27,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_area_entered(area):
 	if area is laser:
 		sound.play()
+		enemy_killed.emit()
 	elif area is player:
 		hit.play()
 	animate.play()
-	
-
 
 
 func _on_animated_sprite_2d_animation_finished():

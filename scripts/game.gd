@@ -5,8 +5,11 @@ extends Node2D
 @onready var asteroid_prefab = preload("res://prefabs/asteroid.tscn")
 @onready var heartsContainer = $HeartsCanvas/HeartsContainer
 
+@export var score = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_update_ui()
 	heartsContainer.setMaxHearts($player.MAX_HEALTH)
 	heartsContainer.updateHearts($player.CURR_HEALTH)
 	$player.healthChanged.connect(heartsContainer.updateHearts)
@@ -24,4 +27,13 @@ func _on_asteroid_timer_timeout():
 	enemy.position = Vector2(2000, enemy_y)
 	enemy.scale = Vector2(enemy_size, enemy_size)
 	enemy.rotation = enemy_rot
+	enemy.enemy_killed.connect(_on_enemy_killed)
 	add_child(enemy)
+
+
+func _update_ui():
+	$scorebar/scoreLabel.text = "SCORE: " + str(max(score, 0))
+
+func _on_enemy_killed():
+	score -= 50
+	_update_ui()
