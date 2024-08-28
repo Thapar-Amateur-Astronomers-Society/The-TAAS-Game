@@ -60,7 +60,7 @@ offset_right = 181.5
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "SCORE: 0000"
+text = "AURA: 0000"
 horizontal_alignment = 1
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

@@ -34,14 +34,14 @@ func _on_asteroid_timer_timeout():
 
 func _update_ui():
 	score = max(score, 0)
-	$scorebar/scoreLabel.text = "SCORE: " + str(score)
+	$scorebar/scoreLabel.text = "AURA: " + str(score)
 
 func _on_enemy_killed():
 	score += 10
 	_update_ui()
 	
 func _on_enemy_hit():
-	score -= 20
+	score -= 5
 	_update_ui()
 
 
