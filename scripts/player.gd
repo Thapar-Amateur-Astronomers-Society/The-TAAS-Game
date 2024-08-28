@@ -11,11 +11,12 @@ signal enemyHit
 @onready var laser_prefab = preload("res://prefabs/laser.tscn")
 @onready var laser_timer = $LaserInterval
 @onready var laser_sound = $laser_sound
+@onready var damaged_sprites = $player_sprites/ship_Sprite2D
 @onready var CURR_HEALTH = MAX_HEALTH
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ship_Sprite2D.frame = 0
+	damaged_sprites.frame = 0
 	pass # Replace with function body.
 
 
@@ -46,7 +47,7 @@ func _on_area_entered(area):
 	if area is enemy:
 		CURR_HEALTH -= 1
 		CURR_HEALTH = maxi(CURR_HEALTH, 0)
-		$ship_Sprite2D.frame += 1
+		damaged_sprites.frame += 1
 		healthChanged.emit(CURR_HEALTH)
 		enemyHit.emit()
 	
