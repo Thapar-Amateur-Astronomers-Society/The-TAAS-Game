@@ -1,11 +1,158 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba658vk8fv4m8"]
+[gd_scene load_steps=32 format=3 uid="uid://ba658vk8fv4m8"]
 
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_0h8cj"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_hlh3g"]
 [ext_resource type="PackedScene" uid="uid://cxpchb2y5p51d" path="res://prefabs/player_sprites.tscn" id="2_yl0y0"]
+[ext_resource type="Texture2D" uid="uid://b0o02rwghkp3p" path="res://assets/menu/Starry background  - Layer 01 - Void.png" id="4_d36a6"]
+[ext_resource type="Texture2D" uid="uid://b6oreblotrppf" path="res://assets/menu/Starry background  - Layer 02 - Stars.png" id="4_scs8s"]
+[ext_resource type="Texture2D" uid="uid://cog0u2hsd40hk" path="res://assets/menu/Starry background  - Layer 03 - Stars.png" id="5_3s7nk"]
+[ext_resource type="AudioStream" uid="uid://bv7eockw2auaa" path="res://audio/pressplay-pandabeats.wav" id="7_r8fv5"]
 
 [sub_resource type="Theme" id="Theme_we50r"]
 default_font = ExtResource("1_0h8cj")
 default_font_size = 33
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8x43"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8osp"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwd0n"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf8mo"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd1fo"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ebgj"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yccy"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(3840, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyo8h"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(4480, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ear"]
+atlas = ExtResource("4_scs8s")
+region = Rect2(5120, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6b0jk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8x43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8osp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwd0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf8mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd1fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ebgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yccy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyo8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ear")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpv2t"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbpt8"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62lcu"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr1li"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mvlg"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sjh8"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2b14"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(3840, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmtsm"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(4480, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_080ac"]
+atlas = ExtResource("5_3s7nk")
+region = Rect2(5120, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ker3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpv2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbpt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62lcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr1li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mvlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sjh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2b14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmtsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_080ac")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_xd106"]
 resource_name = "blink"
@@ -52,6 +199,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_we50r")
+script = ExtResource("2_hlh3g")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -64,6 +212,27 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
+
+[node name="BackgroundMenu" type="Node2D" parent="MarginContainer"]
+
+[node name="void" type="Sprite2D" parent="MarginContainer/BackgroundMenu"]
+position = Vector2(963.556, 546)
+scale = Vector2(3.01111, 3.01111)
+texture = ExtResource("4_d36a6")
+hframes = 9
+
+[node name="stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
+position = Vector2(958.975, 541.424)
+scale = Vector2(2.99209, 2.99209)
+sprite_frames = SubResource("SpriteFrames_6b0jk")
+autoplay = "default"
+frame_progress = 0.445656
+
+[node name="big_stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
+position = Vector2(963.556, 546)
+scale = Vector2(3.01111, 3.01111)
+sprite_frames = SubResource("SpriteFrames_ker3a")
+autoplay = "default"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -131,3 +300,7 @@ text = "Press space to blast off. press esc to exit the game.
 "
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_r8fv5")
+autoplay = true
