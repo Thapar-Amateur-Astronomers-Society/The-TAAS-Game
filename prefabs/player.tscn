@@ -1,77 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfcobumvo5yls"]
+[gd_scene load_steps=5 format=3 uid="uid://cfcobumvo5yls"]
 
-[ext_resource type="Texture2D" uid="uid://cvemxxprwpx8y" path="res://assets/player_ship/Main Ship - Base - Full health.png" id="1_hot3r"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k1pkx"]
-[ext_resource type="Texture2D" uid="uid://cwy2juqjrigf8" path="res://assets/player_ship/boosters.png" id="2_j7424"]
+[ext_resource type="PackedScene" uid="uid://cxpchb2y5p51d" path="res://prefabs/player_sprites.tscn" id="2_negd8"]
 [ext_resource type="AudioStream" uid="uid://78cix41v18qn" path="res://audio/laser.wav" id="4_5n6ld"]
-[ext_resource type="Texture2D" uid="uid://bnmsrk0qh1kcd" path="res://assets/player_ship/Main Ship - Base - Slight damage.png" id="4_gpjtr"]
-[ext_resource type="Texture2D" uid="uid://cxg7tbsl5tyv3" path="res://assets/player_ship/Main Ship - Base - Very damaged.png" id="5_kqdmv"]
-[ext_resource type="Texture2D" uid="uid://bfe8c2mbfgt05" path="res://assets/player_ship/Main Ship - Base - Damaged.png" id="5_xp8an"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvxv8"]
-atlas = ExtResource("2_j7424")
-region = Rect2(0, 30, 21, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivceq"]
-atlas = ExtResource("2_j7424")
-region = Rect2(21, 30, 21, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbiky"]
-atlas = ExtResource("2_j7424")
-region = Rect2(42, 30, 21, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7bav6"]
-atlas = ExtResource("2_j7424")
-region = Rect2(63, 30, 21, 10)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xukwi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivceq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbiky")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7bav6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbiky")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivceq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxv8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 15.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mrett"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_hot3r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_gpjtr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_xp8an")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_kqdmv")
-}],
-"loop": false,
-"name": &"default",
-"speed": 1.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4pg4"]
 radius = 56.0022
@@ -79,20 +10,7 @@ radius = 56.0022
 [node name="player" type="Area2D"]
 script = ExtResource("1_k1pkx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-84, -9.53674e-07)
-scale = Vector2(1.90476, 3.2)
-sprite_frames = SubResource("SpriteFrames_xukwi")
-autoplay = "default"
-frame = 4
-frame_progress = 0.992532
-
-[node name="ship_Sprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-rotation = 1.5708
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_mrett")
+[node name="player_sprites" parent="." instance=ExtResource("2_negd8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

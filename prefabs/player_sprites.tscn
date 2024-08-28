@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxpchb2y5p51d"]
+
+[ext_resource type="Texture2D" uid="uid://cwy2juqjrigf8" path="res://assets/player_ship/boosters.png" id="1_1ke5f"]
+[ext_resource type="Texture2D" uid="uid://cvemxxprwpx8y" path="res://assets/player_ship/Main Ship - Base - Full health.png" id="2_2viyv"]
+[ext_resource type="Texture2D" uid="uid://bnmsrk0qh1kcd" path="res://assets/player_ship/Main Ship - Base - Slight damage.png" id="3_3d002"]
+[ext_resource type="Texture2D" uid="uid://bfe8c2mbfgt05" path="res://assets/player_ship/Main Ship - Base - Damaged.png" id="4_7gu45"]
+[ext_resource type="Texture2D" uid="uid://cxg7tbsl5tyv3" path="res://assets/player_ship/Main Ship - Base - Very damaged.png" id="5_ryl57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxv8"]
+atlas = ExtResource("1_1ke5f")
+region = Rect2(0, 30, 21, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivceq"]
+atlas = ExtResource("1_1ke5f")
+region = Rect2(21, 30, 21, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbiky"]
+atlas = ExtResource("1_1ke5f")
+region = Rect2(42, 30, 21, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bav6"]
+atlas = ExtResource("1_1ke5f")
+region = Rect2(63, 30, 21, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ohmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivceq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbiky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bav6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbiky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivceq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxv8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70gq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2viyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3d002")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7gu45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ryl57")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="player_sprites" type="Node2D"]
+
+[node name="exhaust_Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-84, -9.53674e-07)
+scale = Vector2(1.90476, 3.2)
+sprite_frames = SubResource("SpriteFrames_6ohmu")
+autoplay = "default"
+
+[node name="ship_Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_70gq5")
