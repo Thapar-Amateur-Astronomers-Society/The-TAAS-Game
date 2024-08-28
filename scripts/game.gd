@@ -13,6 +13,7 @@ func _ready():
 	heartsContainer.setMaxHearts($player.MAX_HEALTH)
 	heartsContainer.updateHearts($player.CURR_HEALTH)
 	$player.healthChanged.connect(heartsContainer.updateHearts)
+	$player.enemyHit.connect(_on_enemy_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,8 +33,18 @@ func _on_asteroid_timer_timeout():
 
 
 func _update_ui():
-	$scorebar/scoreLabel.text = "SCORE: " + str(max(score, 0))
+	score = max(score, 0)
+	$scorebar/scoreLabel.text = "SCORE: " + str(score)
 
 func _on_enemy_killed():
-	score -= 50
+	score += 10
+	_update_ui()
+	
+func _on_enemy_hit():
+	score -= 10
+	_update_ui()
+
+
+func _on_score_timer_timeout():
+	score += 1
 	_update_ui()
