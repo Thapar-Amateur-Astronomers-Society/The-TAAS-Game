@@ -41,7 +41,7 @@ func _on_enemy_killed():
 	_update_ui()
 	
 func _on_enemy_hit():
-	score -= 10
+	score -= 20
 	_update_ui()
 
 
