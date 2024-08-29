@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ba658vk8fv4m8"]
+[gd_scene load_steps=33 format=3 uid="uid://ba658vk8fv4m8"]
 
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_0h8cj"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_hlh3g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6oreblotrppf" path="res://assets/menu/Starry background  - Layer 02 - Stars.png" id="4_scs8s"]
 [ext_resource type="Texture2D" uid="uid://cog0u2hsd40hk" path="res://assets/menu/Starry background  - Layer 03 - Stars.png" id="5_3s7nk"]
 [ext_resource type="AudioStream" uid="uid://bv7eockw2auaa" path="res://audio/pressplay-pandabeats.wav" id="7_r8fv5"]
+[ext_resource type="AudioStream" uid="uid://dlnj30csc1er1" path="res://audio/start-sound.wav" id="8_c3g37"]
 
 [sub_resource type="Theme" id="Theme_we50r"]
 default_font = ExtResource("1_0h8cj")
@@ -80,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpv2t"]
@@ -154,6 +155,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_8mnb8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_xd106"]
 resource_name = "blink"
 loop_mode = 1
@@ -168,21 +184,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_8mnb8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fl1o3"]
@@ -226,7 +227,6 @@ position = Vector2(958.975, 541.424)
 scale = Vector2(2.99209, 2.99209)
 sprite_frames = SubResource("SpriteFrames_6b0jk")
 autoplay = "default"
-frame_progress = 0.445656
 
 [node name="big_stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
 position = Vector2(963.556, 546)
@@ -242,7 +242,7 @@ theme_override_constants/separation = 140
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="game_title" type="Label" parent="MarginContainer/VBoxContainer"]
 z_index = 5
 texture_filter = 1
 layout_mode = 2
@@ -288,6 +288,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/HBoxContainer/insert-coin"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_fl1o3")
 }
@@ -295,12 +296,16 @@ autoplay = "blink"
 
 [node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.505344, 0.505344, 0.505344, 1)
-text = "Press space to blast off. press esc to exit the game.
-"
+theme_override_colors/font_color = Color(0.733005, 0.733005, 0.733005, 1)
+text = "Press space to blast off!!!
+Earn +1 aura every second, +10 for each asteroid shot down, -5 for hitting an asteroid."
 horizontal_alignment = 1
 vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_r8fv5")
 autoplay = true
+
+[node name="start_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c3g37")
