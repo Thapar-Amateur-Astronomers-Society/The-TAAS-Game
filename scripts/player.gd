@@ -4,7 +4,6 @@ class_name player
 signal healthChanged
 signal enemyHit
 signal playerDeathStart
-signal playerDeathEnd
 
 @export var speed = 3.0
 @export var cooldown = 1.0
@@ -60,7 +59,6 @@ func _on_area_entered(area):
 			$CollisionShape2D.set_deferred("disabled", true)
 			await get_tree().create_timer(0.5).timeout
 			spawn_explosion()
-			playerDeathEnd.emit()
 
 
 func spawn_explosion():
@@ -68,3 +66,5 @@ func spawn_explosion():
 	explosion.position = position
 	$player_sprites.visible = false
 	get_parent().add_child(explosion)
+	await explosion.tree_exiting
+	queue_free()

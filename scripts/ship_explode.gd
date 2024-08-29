@@ -1,5 +1,7 @@
 extends Area2D
 
+signal exploded
+
 @onready var animation = %explode_sprite
 @onready var boom = %"ship-explode_sound"
 

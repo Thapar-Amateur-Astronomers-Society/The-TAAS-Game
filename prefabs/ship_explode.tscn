@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bw3l31vxk8u22"]
 
 [ext_resource type="Texture2D" uid="uid://c3jxf1px331fk" path="res://assets/player_ship/explosion-bdragon1727.png" id="1_bvywx"]
-[ext_resource type="Script" path="res://prefabs/ship_explode.gd" id="1_flfdv"]
+[ext_resource type="Script" path="res://scripts/ship_explode.gd" id="1_khrc1"]
 [ext_resource type="AudioStream" uid="uid://5qbmklrui7ep" path="res://audio/ship_explode.wav" id="3_kgisf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2scg1"]
@@ -52,7 +52,7 @@ animations = [{
 
 [node name="ship-explode" type="Area2D"]
 scale = Vector2(5, 5)
-script = ExtResource("1_flfdv")
+script = ExtResource("1_khrc1")
 
 [node name="ship-explode_sound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

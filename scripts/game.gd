@@ -14,6 +14,7 @@ func _ready():
 	heartsContainer.updateHearts($player.CURR_HEALTH)
 	$player.healthChanged.connect(heartsContainer.updateHearts)
 	$player.enemyHit.connect(_on_enemy_hit)
+	$player.playerDeathStart.connect(game_over)
 
 
 func _on_asteroid_timer_timeout():
@@ -48,4 +49,8 @@ func _on_score_timer_timeout():
 
 # func to change scene to game over screen
 func game_over():
-	pass
+	$ScoreTimer.stop()
+	$scorebar.visible = false
+	$"bgmusic-player".stop()
+	await $player.tree_exiting
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
