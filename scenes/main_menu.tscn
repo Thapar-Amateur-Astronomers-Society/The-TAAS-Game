@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpv2t"]
@@ -227,7 +227,6 @@ position = Vector2(958.975, 541.424)
 scale = Vector2(2.99209, 2.99209)
 sprite_frames = SubResource("SpriteFrames_6b0jk")
 autoplay = "default"
-frame_progress = 0.132913
 
 [node name="big_stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
 position = Vector2(963.556, 546)
