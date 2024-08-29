@@ -48,3 +48,8 @@ func _on_enemy_hit():
 func _on_score_timer_timeout():
 	score += 1
 	_update_ui()
+	
+
+# func to change scene to game over screen
+func game_over():
+	pass

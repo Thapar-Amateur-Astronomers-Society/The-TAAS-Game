@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ba658vk8fv4m8"]
+[gd_scene load_steps=33 format=3 uid="uid://ba658vk8fv4m8"]
 
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_0h8cj"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_hlh3g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6oreblotrppf" path="res://assets/menu/Starry background  - Layer 02 - Stars.png" id="4_scs8s"]
 [ext_resource type="Texture2D" uid="uid://cog0u2hsd40hk" path="res://assets/menu/Starry background  - Layer 03 - Stars.png" id="5_3s7nk"]
 [ext_resource type="AudioStream" uid="uid://bv7eockw2auaa" path="res://audio/pressplay-pandabeats.wav" id="7_r8fv5"]
+[ext_resource type="AudioStream" uid="uid://dlnj30csc1er1" path="res://audio/start-sound.wav" id="8_c3g37"]
 
 [sub_resource type="Theme" id="Theme_we50r"]
 default_font = ExtResource("1_0h8cj")
@@ -305,3 +306,6 @@ autowrap_mode = 3
 [node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_r8fv5")
 autoplay = true
+
+[node name="start_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c3g37")
