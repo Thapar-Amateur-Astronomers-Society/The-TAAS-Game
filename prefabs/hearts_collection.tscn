@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dknb8daf1qdre"]
 
-[ext_resource type="Script" path="res://prefabs/hearts_collection.gd" id="1_ylnr8"]
+[ext_resource type="Script" path="res://scripts/hearts_collection.gd" id="1_ksgcs"]
 
 [node name="HeartsContainer" type="HBoxContainer"]
 layout_direction = 2
 theme_override_constants/separation = 7
-script = ExtResource("1_ylnr8")
+script = ExtResource("1_ksgcs")

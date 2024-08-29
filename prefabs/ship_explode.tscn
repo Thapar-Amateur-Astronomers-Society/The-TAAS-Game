@@ -51,7 +51,7 @@ animations = [{
 }]
 
 [node name="ship-explode" type="Area2D"]
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 script = ExtResource("1_khrc1")
 
 [node name="ship-explode_sound" type="AudioStreamPlayer2D" parent="."]

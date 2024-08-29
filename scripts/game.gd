@@ -5,6 +5,8 @@ extends Node2D
 @onready var asteroid_prefab = preload("res://prefabs/asteroid.tscn")
 @onready var heartsContainer = $HeartsCanvas/HeartsContainer
 
+@onready var gameOverScene = preload("res://scenes/game_over.tscn")
+
 @export var score = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -53,4 +55,6 @@ func game_over():
 	$scorebar.visible = false
 	$"bgmusic-player".stop()
 	await $player.tree_exiting
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	var game_over_gui = gameOverScene.instantiate()
+	game_over_gui.aura = score
+	get_parent().add_child(game_over_gui)

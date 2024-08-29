@@ -306,7 +306,9 @@ autowrap_mode = 3
 
 [node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_r8fv5")
+volume_db = 10.0
 autoplay = true
 
 [node name="start_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_c3g37")
+volume_db = 15.0
