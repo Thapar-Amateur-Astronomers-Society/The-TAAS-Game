@@ -243,7 +243,7 @@ theme_override_constants/separation = 140
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="game_title" type="Label" parent="MarginContainer/VBoxContainer"]
 z_index = 5
 texture_filter = 1
 layout_mode = 2
@@ -289,6 +289,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/HBoxContainer/insert-coin"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_fl1o3")
 }
@@ -296,8 +297,8 @@ autoplay = "blink"
 
 [node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.505344, 0.505344, 0.505344, 1)
-text = "Press space to blast off. press esc to exit the game.
+theme_override_colors/font_color = Color(0.733005, 0.733005, 0.733005, 1)
+text = "Press space to blast off!!!
 Earn +1 aura every second, +10 for each asteroid shot down, -5 for hitting an asteroid."
 horizontal_alignment = 1
 vertical_alignment = 2
