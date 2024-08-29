@@ -15,7 +15,7 @@ default_font_size = 50
 script = ExtResource("1_38rcc")
 
 [node name="player" parent="." instance=ExtResource("1_pej3r")]
-position = Vector2(96, 528)
+position = Vector2(100, 480)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_6ni8v")]
 

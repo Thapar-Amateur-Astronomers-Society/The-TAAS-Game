@@ -3,16 +3,21 @@ class_name player
 
 signal healthChanged
 signal enemyHit
+signal playerDeathStart
+signal playerDeathEnd
 
 @export var speed = 3.0
 @export var cooldown = 1.0
 @export var MAX_HEALTH = 3
 
 @onready var laser_prefab = preload("res://prefabs/laser.tscn")
+@onready var explode_prefab = preload("res://prefabs/ship_explode.tscn")
 @onready var laser_timer = $LaserInterval
 @onready var laser_sound = $laser_sound
 @onready var damaged_sprites = $player_sprites/ship_Sprite2D
 @onready var CURR_HEALTH = MAX_HEALTH
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,4 +55,16 @@ func _on_area_entered(area):
 		damaged_sprites.frame += 1
 		healthChanged.emit(CURR_HEALTH)
 		enemyHit.emit()
-	
+		if CURR_HEALTH == 0:
+			playerDeathStart.emit()
+			$CollisionShape2D.set_deferred("disabled", true)
+			await get_tree().create_timer(0.5).timeout
+			spawn_explosion()
+			playerDeathEnd.emit()
+
+
+func spawn_explosion():
+	var explosion = explode_prefab.instantiate()
+	explosion.position = position
+	$player_sprites.visible = false
+	get_parent().add_child(explosion)

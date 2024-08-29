@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw3l31vxk8u22"]
+
+[ext_resource type="Texture2D" uid="uid://c3jxf1px331fk" path="res://assets/player_ship/explosion-bdragon1727.png" id="1_bvywx"]
+[ext_resource type="Script" path="res://prefabs/ship_explode.gd" id="1_flfdv"]
+[ext_resource type="AudioStream" uid="uid://5qbmklrui7ep" path="res://audio/ship_explode.wav" id="3_kgisf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2scg1"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6j3v"]
+atlas = ExtResource("1_bvywx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47d7i"]
+atlas = ExtResource("1_bvywx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afajk"]
+atlas = ExtResource("1_bvywx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d24l"]
+atlas = ExtResource("1_bvywx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucg2i"]
+atlas = ExtResource("1_bvywx")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kpef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6j3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47d7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afajk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d24l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucg2i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="ship-explode" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_flfdv")
+
+[node name="ship-explode_sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_kgisf")
+pitch_scale = 0.7
+autoplay = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2scg1")
+disabled = true
+
+[node name="explode_sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6kpef")
+autoplay = "default"

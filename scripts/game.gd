@@ -15,10 +15,6 @@ func _ready():
 	$player.healthChanged.connect(heartsContainer.updateHearts)
 	$player.enemyHit.connect(_on_enemy_hit)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_asteroid_timer_timeout():
 	var enemy = asteroid_prefab.instantiate()
