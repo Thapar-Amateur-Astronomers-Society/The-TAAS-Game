@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqls2igv3wj86"]
+
+[ext_resource type="Script" path="res://scripts/score_anim.gd" id="1_4wsss"]
+[ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_8eebs"]
+
+[sub_resource type="Theme" id="Theme_l27bd"]
+default_font = ExtResource("1_8eebs")
+default_font_size = 10
+
+[sub_resource type="Animation" id="Animation_6nhiy"]
+resource_name = "score_float"
+length = 0.5
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scoreLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-82, -60), Vector2(-82, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_hapbr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scoreLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-82, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_088be"]
+_data = {
+"RESET": SubResource("Animation_hapbr"),
+"score_float": SubResource("Animation_6nhiy")
+}
+
+[node name="score_anim" type="Control"]
+z_index = 5
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = -1.0
+theme = SubResource("Theme_l27bd")
+script = ExtResource("1_4wsss")
+
+[node name="scoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -120.0
+offset_right = 82.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "+100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_088be")
+}
+autoplay = "score_float"
