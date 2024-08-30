@@ -1,6 +1,5 @@
 extends Control
 
-@onready var game = preload("res://scenes/main.tscn") as PackedScene
 @onready var start_sound = $start_sound
 @onready var blink = %AnimationPlayer
 
@@ -21,4 +20,4 @@ func _input(event):
 		await start_sound.finished
 		Transition.transition()
 		await Transition.on_transition_finished
-		get_tree().change_scene_to_packed(game)
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
