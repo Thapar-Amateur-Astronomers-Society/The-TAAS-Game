@@ -295,6 +295,7 @@ libraries = {
 autoplay = "blink"
 
 [node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.733005, 0.733005, 0.733005, 1)
 text = "Press space to blast off!!!
@@ -305,7 +306,9 @@ autowrap_mode = 3
 
 [node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_r8fv5")
+volume_db = 10.0
 autoplay = true
 
 [node name="start_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_c3g37")
+volume_db = 15.0

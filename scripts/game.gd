@@ -5,6 +5,8 @@ extends Node2D
 @onready var asteroid_prefab = preload("res://prefabs/asteroid.tscn")
 @onready var heartsContainer = $HeartsCanvas/HeartsContainer
 
+@onready var gameOverScene = preload("res://scenes/game_over.tscn")
+
 @export var score = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -14,10 +16,7 @@ func _ready():
 	heartsContainer.updateHearts($player.CURR_HEALTH)
 	$player.healthChanged.connect(heartsContainer.updateHearts)
 	$player.enemyHit.connect(_on_enemy_hit)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	$player.playerDeathStart.connect(game_over)
 
 
 func _on_asteroid_timer_timeout():
@@ -52,4 +51,10 @@ func _on_score_timer_timeout():
 
 # func to change scene to game over screen
 func game_over():
-	pass
+	$ScoreTimer.stop()
+	$scorebar.visible = false
+	$"bgmusic-player".stop()
+	await $player.tree_exiting
+	var game_over_gui = gameOverScene.instantiate()
+	game_over_gui.aura = score
+	get_parent().add_child(game_over_gui)

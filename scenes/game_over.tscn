@@ -1,9 +1,264 @@
-[gd_scene format=3 uid="uid://ddco1j1wcom6e"]
+[gd_scene load_steps=13 format=3 uid="uid://ddco1j1wcom6e"]
+
+[ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_pm25x"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="2_raxpc"]
+[ext_resource type="AudioStream" uid="uid://cqo5lsliti45s" path="res://audio/title_crash.wav" id="2_uv38a"]
+[ext_resource type="AudioStream" uid="uid://cd0tfs6o2n068" path="res://audio/continue-pandabeats.wav" id="4_o5svr"]
+[ext_resource type="AudioStream" uid="uid://bj1yp574kxide" path="res://audio/restart.wav" id="5_mbb0h"]
+
+[sub_resource type="Theme" id="Theme_olaio"]
+default_font = ExtResource("1_pm25x")
+default_font_size = 120
+
+[sub_resource type="Animation" id="Animation_e81jl"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lj7nb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h7nci"]
+_data = {
+"RESET": SubResource("Animation_lj7nb"),
+"blink": SubResource("Animation_e81jl")
+}
+
+[sub_resource type="Animation" id="Animation_qd5ew"]
+resource_name = "gameover_appear"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/thx:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/gameover:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/gameover/text_crashing:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7olv8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/gameover:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/gameover/text_crashing:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/aura:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/thx:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ox8rg"]
+_data = {
+"RESET": SubResource("Animation_7olv8"),
+"gameover_appear": SubResource("Animation_qd5ew")
+}
 
 [node name="game_over" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_olaio")
+script = ExtResource("2_raxpc")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="sep2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+
+[node name="gameover" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.854902, 0.513726, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 150
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text_crashing" type="AudioStreamPlayer" parent="VBoxContainer/gameover"]
+stream = ExtResource("2_uv38a")
+volume_db = 20.0
+
+[node name="aura" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/aura"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 40
+text = "Your Aura:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="VBoxContainer/aura"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.800729, 0.800729, 7.70092e-07, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "9999"
+vertical_alignment = 1
+
+[node name="sep" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+
+[node name="thx" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="thx-blink" type="AnimationPlayer" parent="VBoxContainer/thx"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_h7nci")
+}
+
+[node name="gameover_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ox8rg")
+}
+autoplay = "gameover_appear"
+
+[node name="gameover_bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o5svr")
+volume_db = -10.0
+autoplay = true
+
+[node name="restart_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mbb0h")
+volume_db = 20.0
