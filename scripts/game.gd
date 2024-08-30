@@ -8,6 +8,7 @@ extends Node2D
 @onready var gameOverScene = preload("res://scenes/game_over.tscn")
 
 @export var score = 0
+@export var time = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +34,16 @@ func _on_asteroid_timer_timeout():
 
 func _update_ui():
 	score = max(score, 0)
+	time = max(time, 0)
 	$scorebar/scoreLabel.text = "AURA: " + str(score)
+	%timer_label.text = ":" + str(time)
+	if time == 10:
+		%AnimationPlayer.play("blink_slow")
+	if time == 5:
+		%AnimationPlayer.play("blink_fast")
+	if time == 0:
+		%player.queue_free()
+		game_over()
 
 func _on_enemy_killed():
 	score += 10
@@ -55,6 +65,15 @@ func game_over():
 	$scorebar.visible = false
 	$"bgmusic-player".stop()
 	await $player.tree_exiting
+	_init_go()
+	
+	
+func _init_go():
 	var game_over_gui = gameOverScene.instantiate()
 	game_over_gui.aura = score
 	get_parent().add_child(game_over_gui)
+
+
+func _on_second_timer_timeout():
+	time -= 1
+	

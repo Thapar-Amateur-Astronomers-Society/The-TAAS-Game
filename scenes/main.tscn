@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d15pqeaiu2sid"]
+[gd_scene load_steps=13 format=3 uid="uid://d15pqeaiu2sid"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_38rcc"]
 [ext_resource type="PackedScene" uid="uid://cfcobumvo5yls" path="res://prefabs/player.tscn" id="1_pej3r"]
@@ -12,19 +12,81 @@
 default_font = ExtResource("6_ainq6")
 default_font_size = 50
 
+[sub_resource type="Animation" id="Animation_pdc7g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_43w33"]
+resource_name = "blink_fast"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lciw4"]
+resource_name = "blink"
+length = 0.25
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q36s3"]
+_data = {
+"RESET": SubResource("Animation_pdc7g"),
+"blink_fast": SubResource("Animation_lciw4"),
+"blink_slow": SubResource("Animation_43w33")
+}
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_38rcc")
 
 [node name="player" parent="." instance=ExtResource("1_pej3r")]
+unique_name_in_owner = true
 position = Vector2(100, 480)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_6ni8v")]
 
 [node name="AsteroidTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.4
 autostart = true
 
 [node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SecondTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="bgmusic-player" type="AudioStreamPlayer2D" parent="."]
@@ -55,7 +117,14 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_4euhk")
 centered = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scorebar/clock_sprite"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_q36s3")
+}
+
 [node name="timer_label" type="Label" parent="scorebar"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 95.0
@@ -85,3 +154,4 @@ vertical_alignment = 1
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="SecondTimer" to="." method="_on_second_timer_timeout"]

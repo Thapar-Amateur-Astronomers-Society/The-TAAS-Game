@@ -48,7 +48,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70gq5"]
@@ -79,6 +79,7 @@ position = Vector2(-84, -9.53674e-07)
 scale = Vector2(1.90476, 3.2)
 sprite_frames = SubResource("SpriteFrames_6ohmu")
 autoplay = "default"
+frame_progress = 0.40566
 
 [node name="ship_Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
