@@ -1,7 +1,7 @@
 extends Area2D
 class_name laser
 
-@export var speed = 10.0
+@export var speed = 20.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x += speed
+	position.x += speed * 100 * delta
 	
 
 

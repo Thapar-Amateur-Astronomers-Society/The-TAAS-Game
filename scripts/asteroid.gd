@@ -16,8 +16,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= speed
-	rotation += rot_speed
+	position.x -= speed * 100 * delta
+	rotation += rot_speed * 100 * delta
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

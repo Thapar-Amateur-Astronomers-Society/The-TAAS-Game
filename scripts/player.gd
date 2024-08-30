@@ -5,7 +5,7 @@ signal healthChanged
 signal enemyHit
 signal playerDeathStart
 
-@export var speed = 3.0
+@export var speed = 5.0
 @export var cooldown = 1.0
 @export var MAX_HEALTH = 3
 
@@ -28,13 +28,13 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_pressed("player_up") and position.y > 64:
-		position.y -= speed
+		position.y -= speed * 100 * delta
 	if Input.is_action_pressed("player_down") and position.y < 968:
-		position.y += speed
+		position.y += speed * 100 * delta
 	if Input.is_action_pressed("player_left") and position.x > 64:
-		position.x -= speed
+		position.x -= speed * 100 * delta
 	if Input.is_action_pressed("player_right") and position.x < 968:
-		position.x += speed
+		position.x += speed * 100 * delta
 		
 	if Input.is_action_just_pressed("player_shoot") and laser_timer.is_stopped():
 		laser_timer.start(cooldown)
