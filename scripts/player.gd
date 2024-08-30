@@ -57,7 +57,6 @@ func _on_area_entered(area):
 		if CURR_HEALTH == 0:
 			playerDeathStart.emit()
 			$CollisionShape2D.set_deferred("disabled", true)
-			await get_tree().create_timer(0.5).timeout
 			spawn_explosion()
 
 

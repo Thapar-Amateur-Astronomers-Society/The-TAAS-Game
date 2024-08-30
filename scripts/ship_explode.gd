@@ -7,5 +7,6 @@ signal exploded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#await animation.animation_finished
 	await boom.finished
 	queue_free()

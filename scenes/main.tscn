@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d15pqeaiu2sid"]
+[gd_scene load_steps=9 format=3 uid="uid://d15pqeaiu2sid"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_38rcc"]
 [ext_resource type="PackedScene" uid="uid://cfcobumvo5yls" path="res://prefabs/player.tscn" id="1_pej3r"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://hogj58x6pmp7" path="res://audio/voyage-pandabeats.wav" id="4_q01u6"]
 [ext_resource type="PackedScene" uid="uid://dknb8daf1qdre" path="res://prefabs/hearts_collection.tscn" id="5_4inwy"]
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="6_ainq6"]
+[ext_resource type="Texture2D" uid="uid://y0ehjwihpui3" path="res://assets/gui/clock.png" id="7_4euhk"]
 
 [sub_resource type="Theme" id="Theme_mk5gu"]
 default_font = ExtResource("6_ainq6")
@@ -48,6 +49,23 @@ offset_right = 1920.0
 offset_bottom = 100.0
 theme = SubResource("Theme_mk5gu")
 
+[node name="clock_sprite" type="Sprite2D" parent="scorebar"]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_4euhk")
+centered = false
+
+[node name="timer_label" type="Label" parent="scorebar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 95.0
+offset_right = 202.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 60
+text = ":00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="scoreLabel" type="Label" parent="scorebar"]
 layout_mode = 1
 anchors_preset = 8
@@ -55,20 +73,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -181.5
+offset_left = -205.0
 offset_top = -48.0
-offset_right = 181.5
+offset_right = 205.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "AURA: 0000"
 horizontal_alignment = 1
-
-[node name="timer" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+vertical_alignment = 1
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
