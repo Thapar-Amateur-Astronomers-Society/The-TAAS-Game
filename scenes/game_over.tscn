@@ -256,6 +256,7 @@ autoplay = "gameover_appear"
 
 [node name="gameover_bg" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_o5svr")
+volume_db = -10.0
 autoplay = true
 
 [node name="restart_sound" type="AudioStreamPlayer" parent="."]

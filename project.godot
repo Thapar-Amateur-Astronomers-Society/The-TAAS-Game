@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Taas-game"
+config/version="alpha-0.13"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
@@ -25,6 +26,12 @@ Transition="*res://scenes/transition.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=4
+
+[editor]
+
+movie_writer/movie_file="C:/Users/Ikansh/Videos/movie-test.avi"
+movie_writer/disable_vsync=true
+movie_writer/fps=30
 
 [input]
 
