@@ -41,7 +41,7 @@ func _update_ui():
 		%AnimationPlayer.play("blink_slow")
 	if time == 5:
 		%AnimationPlayer.play("blink_fast")
-	if time == 0:
+	if time <= 1:
 		%player.queue_free()
 		game_over(true)
 
@@ -62,6 +62,7 @@ func _on_score_timer_timeout():
 # func to change scene to game over screen
 func game_over(congrats : bool = false):
 	$ScoreTimer.stop()
+	$SecondTimer.stop()
 	$scorebar.visible = false
 	$"bgmusic-player".stop()
 	await $player.tree_exiting
