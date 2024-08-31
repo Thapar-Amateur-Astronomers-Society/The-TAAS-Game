@@ -211,6 +211,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 
 [node name="gameover" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.854902, 0.513726, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -282,8 +283,8 @@ offset_right = 1880.0
 offset_bottom = 250.0
 theme_override_colors/font_color = Color(0.666569, 0.666569, 0.666569, 1)
 theme_override_font_sizes/font_size = 40
-text = "~Game by ikansh aka ikabrain"
-horizontal_alignment = 1
+text = "~ikansh|taas"
+horizontal_alignment = 2
 
 [node name="gameover_anim" type="AnimationPlayer" parent="."]
 libraries = {

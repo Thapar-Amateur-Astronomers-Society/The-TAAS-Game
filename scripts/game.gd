@@ -43,7 +43,7 @@ func _update_ui():
 		%AnimationPlayer.play("blink_fast")
 	if time == 0:
 		%player.queue_free()
-		game_over()
+		game_over(true)
 
 func _on_enemy_killed():
 	score += 10
@@ -60,16 +60,13 @@ func _on_score_timer_timeout():
 	
 
 # func to change scene to game over screen
-func game_over():
+func game_over(congrats : bool = false):
 	$ScoreTimer.stop()
 	$scorebar.visible = false
 	$"bgmusic-player".stop()
 	await $player.tree_exiting
-	_init_go()
-	
-	
-func _init_go():
 	var game_over_gui = gameOverScene.instantiate()
+	game_over_gui._congrats(congrats)
 	game_over_gui.aura = score
 	get_parent().add_child(game_over_gui)
 
