@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="Taas-game"
-config/version="beta"
+config/version="alpha-0.8"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://icons/icon.svg"
+config/windows_native_icon="res://icons/windows_icon_256.ico"
 
 [autoload]
 
@@ -37,6 +38,12 @@ window/vsync/vsync_mode=0
 movie_writer/movie_file="C:/Users/Ikansh/Videos/movie-test.avi"
 movie_writer/disable_vsync=true
 movie_writer/fps=30
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "red"
+}
 
 [input]
 
