@@ -2,6 +2,12 @@ extends Control
 
 @export var aura = 0
 
+func _congrats(val: bool):
+	if val:
+		%gameover.text = "Time Up!"
+	else:
+		%gameover.text = "You Died."
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	%score.text = str(aura)
