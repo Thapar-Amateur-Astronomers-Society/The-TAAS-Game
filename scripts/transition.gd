@@ -4,6 +4,7 @@ signal on_transition_finished
 
 @onready var colorRect = %ColorRect
 @onready var animation_player = %AnimationPlayer
+var transition_in_progress = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
