@@ -216,6 +216,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="BackgroundMenu" type="Node2D" parent="MarginContainer"]
+position = Vector2(0, -4)
 
 [node name="void" type="Sprite2D" parent="MarginContainer/BackgroundMenu"]
 position = Vector2(963.556, 546)
@@ -277,7 +278,7 @@ uppercase = true
 
 [node name="cornitos" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
 position = Vector2(948, 608)
-scale = Vector2(0.0986021, 0.0986021)
+scale = Vector2(0.531916, 0.531916)
 texture = ExtResource("6_uycjg")
 
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
