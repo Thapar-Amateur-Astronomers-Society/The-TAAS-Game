@@ -14,10 +14,12 @@ func _process(delta):
 	
 	
 func _input(event):
-	if event.is_action_pressed("player_shoot"):
+	if event.is_action_pressed("player_shoot") and not Transition.transition_in_progress:
+		Transition.transition_in_progress = true
 		blink.stop()
 		start_sound.play()
 		await start_sound.finished
 		Transition.transition()
 		await Transition.on_transition_finished
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
+		Transition.transition_in_progress = false
