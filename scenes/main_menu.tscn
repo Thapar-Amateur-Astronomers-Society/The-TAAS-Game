@@ -276,7 +276,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="cornitos" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
-position = Vector2(948, 620)
+position = Vector2(948, 608)
 scale = Vector2(0.0986021, 0.0986021)
 texture = ExtResource("6_uycjg")
 
