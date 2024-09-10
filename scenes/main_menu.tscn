@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ba658vk8fv4m8"]
+[gd_scene load_steps=34 format=3 uid="uid://ba658vk8fv4m8"]
 
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_0h8cj"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_hlh3g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0o02rwghkp3p" path="res://assets/menu/Starry background  - Layer 01 - Void.png" id="4_d36a6"]
 [ext_resource type="Texture2D" uid="uid://b6oreblotrppf" path="res://assets/menu/Starry background  - Layer 02 - Stars.png" id="4_scs8s"]
 [ext_resource type="Texture2D" uid="uid://cog0u2hsd40hk" path="res://assets/menu/Starry background  - Layer 03 - Stars.png" id="5_3s7nk"]
+[ext_resource type="Texture2D" uid="uid://bxotmoypkm0o0" path="res://assets/sponsor/cornitos-logo.png" id="6_uycjg"]
 [ext_resource type="AudioStream" uid="uid://bv7eockw2auaa" path="res://audio/pressplay-pandabeats.wav" id="7_r8fv5"]
 [ext_resource type="AudioStream" uid="uid://dlnj30csc1er1" path="res://audio/start-sound.wav" id="8_c3g37"]
 
@@ -236,7 +237,7 @@ autoplay = "default"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 140
+theme_override_constants/separation = 100
 
 [node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -258,9 +259,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="sponsor" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = 5
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.854902, 0.513726, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 40
+text = "sponsored by"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="cornitos" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(948, 608)
+scale = Vector2(0.0986021, 0.0986021)
+texture = ExtResource("6_uycjg")
+
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="player_sprites" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_yl0y0")]
 position = Vector2(948, 243)
