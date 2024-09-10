@@ -216,6 +216,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="BackgroundMenu" type="Node2D" parent="MarginContainer"]
+position = Vector2(0, -4)
 
 [node name="void" type="Sprite2D" parent="MarginContainer/BackgroundMenu"]
 position = Vector2(963.556, 546)
