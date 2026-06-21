@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://ba658vk8fv4m8"]
+[gd_scene format=3 uid="uid://ba658vk8fv4m8"]
 
 [ext_resource type="FontFile" uid="uid://ig0x6qactq1s" path="res://fonts/joystix monospace.otf" id="1_0h8cj"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_hlh3g"]
+[ext_resource type="Script" uid="uid://ugniurh4vt86" path="res://scripts/main_menu.gd" id="2_hlh3g"]
 [ext_resource type="PackedScene" uid="uid://cxpchb2y5p51d" path="res://prefabs/player_sprites.tscn" id="2_yl0y0"]
 [ext_resource type="Texture2D" uid="uid://b0o02rwghkp3p" path="res://assets/menu/Starry background  - Layer 01 - Void.png" id="4_d36a6"]
 [ext_resource type="Texture2D" uid="uid://b6oreblotrppf" path="res://assets/menu/Starry background  - Layer 02 - Stars.png" id="4_scs8s"]
@@ -80,7 +80,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q7ear")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 8.0
 }]
@@ -151,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_080ac")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -189,11 +189,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fl1o3"]
 _data = {
-"RESET": SubResource("Animation_8mnb8"),
-"blink": SubResource("Animation_xd106")
+&"RESET": SubResource("Animation_8mnb8"),
+&"blink": SubResource("Animation_xd106")
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=2097480299]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,7 +203,7 @@ grow_vertical = 2
 theme = SubResource("Theme_we50r")
 script = ExtResource("2_hlh3g")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1930415262]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,36 +215,36 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="BackgroundMenu" type="Node2D" parent="MarginContainer"]
+[node name="BackgroundMenu" type="Node2D" parent="MarginContainer" unique_id=440980975]
 position = Vector2(0, -4)
 
-[node name="void" type="Sprite2D" parent="MarginContainer/BackgroundMenu"]
+[node name="void" type="Sprite2D" parent="MarginContainer/BackgroundMenu" unique_id=903430276]
 position = Vector2(963.556, 546)
 scale = Vector2(3.01111, 3.01111)
 texture = ExtResource("4_d36a6")
 hframes = 9
 
-[node name="stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
+[node name="stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu" unique_id=829775649]
 position = Vector2(958.975, 541.424)
 scale = Vector2(2.99209, 2.99209)
 sprite_frames = SubResource("SpriteFrames_6b0jk")
 autoplay = "default"
 
-[node name="big_stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu"]
+[node name="big_stars" type="AnimatedSprite2D" parent="MarginContainer/BackgroundMenu" unique_id=185088876]
 position = Vector2(963.556, 546)
 scale = Vector2(3.01111, 3.01111)
 sprite_frames = SubResource("SpriteFrames_ker3a")
 autoplay = "default"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1907416725]
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer" unique_id=447160111]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="game_title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1317026666]
 z_index = 5
 texture_filter = 1
 layout_mode = 2
@@ -255,12 +255,12 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 30
 theme_override_font_sizes/font_size = 150
-text = "TAAS   Game"
+text = "Astro    Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="sponsor" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="sponsor" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1061054356]
 z_index = 5
 texture_filter = 1
 layout_mode = 2
@@ -276,27 +276,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="cornitos" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+[node name="cornitos" type="Sprite2D" parent="MarginContainer/VBoxContainer" unique_id=1790249165]
 position = Vector2(948, 608)
 scale = Vector2(0.531916, 0.531916)
 texture = ExtResource("6_uycjg")
 
-[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1133344855]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="player_sprites" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_yl0y0")]
-position = Vector2(948, 243)
+[node name="player_sprites" parent="MarginContainer/VBoxContainer" unique_id=1024525914 instance=ExtResource("2_yl0y0")]
+position = Vector2(1007, 237)
 rotation = -1.5708
 scale = Vector2(2, 2)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=115543487]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 alignment = 1
 
-[node name="insert-coin" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="insert-coin" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1195668730]
 z_index = 5
 texture_filter = 1
 layout_mode = 2
@@ -311,14 +311,12 @@ text = "Insert Coin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/HBoxContainer/insert-coin"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/HBoxContainer/insert-coin" unique_id=944773066]
 unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_fl1o3")
-}
-autoplay = "blink"
+libraries/ = SubResource("AnimationLibrary_fl1o3")
+autoplay = &"blink"
 
-[node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=794672841]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.733005, 0.733005, 0.733005, 1)
@@ -328,11 +326,11 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="menumusic-player" type="AudioStreamPlayer2D" parent="."]
+[node name="menumusic-player" type="AudioStreamPlayer2D" parent="." unique_id=835122750]
 stream = ExtResource("7_r8fv5")
 volume_db = 10.0
 autoplay = true
 
-[node name="start_sound" type="AudioStreamPlayer2D" parent="."]
+[node name="start_sound" type="AudioStreamPlayer2D" parent="." unique_id=520393154]
 stream = ExtResource("8_c3g37")
 volume_db = 15.0
